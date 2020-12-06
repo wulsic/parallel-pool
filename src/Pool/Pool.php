@@ -37,29 +37,23 @@ class Pool implements PoolInterface
 
     /**
      * Execute the collector on each future in the futures collection for return value modifications.
-     * The collector will return and wait if necessary for the return values of the submitted jobs.
-     *
-     * @param Closure|null $collector
+     * The collect will return a status indication for the current active jobs.
      *
      * @return array
-     * @throws \Throwable
      */
-    public function collect(Closure $collector = null)
+    public function collect()
     {
-        $values = [];
-
         foreach ($this->jobs as $id => $job) {
             // In PThreads the collector was given to the task instead of handled in the pool itself.
             // Todo: Add retry functionality to retry cancelled jobs?
+            // Todo: Add collector back.
             if ($job->cancelled() || $job->done()) {
-                $values[] = $collector ? $collector($job) : $job->value();
-
                 // Clean-up resources.
                 unset($this->jobs[$id]);
             }
         }
 
-        return $values;
+        return count($this->jobs) !== 0;
     }
 
     /**

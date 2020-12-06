@@ -6,7 +6,7 @@ interface PoolInterface
 {
     public function __construct( int $size, string $bootstrap = null);
 
-    public function collect( \Closure $collector = null );
+    public function collect();
 
     public function shutdown( bool $finish = true );
 
