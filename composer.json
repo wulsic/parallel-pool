@@ -1,0 +1,27 @@
+{
+  "name": "wulsic/parallel-pool",
+  "type": "library",
+  "description": "A PThreads pool like implementation using parallel.",
+  "keywords": [
+    "parallel",
+    "pool"
+  ],
+  "homepage": "https://github.com/wulsic/parallel-pool",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Winston Jašaragić",
+      "email": "wulsic@gmail.com",
+      "homepage": "https://wulsic.dev",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Wulsic\\": "src/"
+    }
+  }
+}
