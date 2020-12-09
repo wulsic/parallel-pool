@@ -79,7 +79,7 @@ class Pool implements PoolInterface
     /**
      * Force the pool to shutdown.
      */
-    private function __destruct()
+    public function __destruct()
     {
         foreach ($this->workers as $worker) {
             $worker->kill();
