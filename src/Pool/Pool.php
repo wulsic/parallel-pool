@@ -77,6 +77,16 @@ class Pool implements PoolInterface
     }
 
     /**
+     * Force the pool to shutdown.
+     */
+    private function __destruct()
+    {
+        foreach ($this->workers as $worker) {
+            $worker->kill();
+        }
+    }
+
+    /**
      * The pool can be shutdown using two options.
      * Finish = true (default). Gracefully shutdown the pool after all the jobs are executed.
      * Finish = false. Force shutdown the pool by killing the workers.
